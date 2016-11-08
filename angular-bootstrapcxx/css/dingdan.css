@@ -1,0 +1,15 @@
+.mycolor {
+    background-color: rgba(222, 241, 242, 0.37);
+}
+
+tr:nth-child(odd) {
+    background-color: rgba(222, 241, 242, 0.37);
+}
+
+.text-successimp {
+    color: #3c763d!important;
+}
+
+tr a {
+    cursor: pointer;
+}
