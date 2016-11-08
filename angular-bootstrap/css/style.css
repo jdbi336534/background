@@ -1,0 +1,43 @@
+/*!
+ * Extend Bootstrap v2.3.1 to provide cell alignment (doh)
+ *
+ */
+
+.table td.tdRight {
+    text-align: right;
+}
+
+.table td.tdCenter {
+    text-align: center;
+}
+
+.table-nonfluid {
+    width: auto;
+}
+
+.gray-bg {
+    background-color: #f3f3f4;
+}
+
+.img-ico {
+    width: 56%;
+    margin-bottom: 50px;
+    l
+}
+
+.loginscreen.middle-box {
+    width: 300px;
+}
+
+.middle-box {
+    z-index: 100;
+    max-width: 400px;
+    margin: 0 auto;
+    padding-top: 80px;
+}
+
+.btn-primary {
+    color: #fff;
+    border-color: #1ab394;
+    background-color: #1ab394;
+}

@@ -1,0 +1,222 @@
+
+
+<div class="header">
+  <h1 class="page-title">商品列表</h1>
+</div>
+
+<ul class="breadcrumb">
+  <li><a href="index.html">商品管理</a> <span class="divider">/</span></li>
+  <li class="active">商品列表</li>
+</ul>
+
+<div class="container-fluid">
+  <div class="row-fluid">
+
+    <div class="btn-toolbar">
+      <button class="btn btn-primary" data-toggle="modal" data-target="#myModal2" ng-click="additem()"><i class="icon-plus"></i> 新增商品</button>
+      <button class="btn">修改商品</button>
+      <button class="btn">删除商品</button>
+      <div class="btn-group">
+      </div>
+    </div>
+    <div class="well">
+      <table class="table">
+        <thead>
+          <tr>
+            <th><input type="checkbox" name="name" value="" ng-click="changeall()" ng-model="checkdata"></th>
+            <th>商品图片</th>
+            <th>商品名字</th>
+            <th>价格</th>
+            <th>
+              <span>
+                <a href="#" class="icon-remove" ng-click="reall()"></a>
+              </span>
+            </th>
+            <th style="width: 26px;"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="product in listdata">
+            <td ng-click="gtxq(product.id)"><input type="checkbox" name="procheck" value="">{{product.id}}</td>
+            <td id="shopimg" ng-click="gtxq(product.id)"><img src="./{{product.prdimgsrc}}" alt="" /></td>
+
+            <td id="shopname" ng-click="gtxq(product.id)">{{product.prdname1+product.prdfont1+product.prdi+product.prdname2}}</td>
+            <td id="priceshop" ng-click="gtxq(product.id)">{{product.prdprice}}</td>
+            <td>
+              <span>
+                <a href="#myModal" class="icon-pencil" data-toggle="modal" ng-click="getindex($index)"></a>
+                <a href="#" class="icon-remove" ng-click="remove($index)"></a>
+              </span>
+
+            </td>
+
+          </tr>
+
+
+        </tbody>
+      </table>
+    </div>
+    <div class="pagination">
+      <ul>
+        <li><a href="#" ng-click="pre()">Prev</a></li>
+        <li ng-repeat="btn in btndata" ng-click="changepage($index)"><a href="#">{{btn}}</a></li>
+
+        <li><a href="#" ng-click="next()">Next</a></li>
+      </ul>
+    </div>
+    <!-- 模态框（Modal）编辑 -->
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+            &times;
+          </button>
+          <h4 class="modal-title" id="myModalLabel">
+            修改商品信息
+          </h4>
+        </div>
+        <div class="modal-body">
+          <div class="input-group">
+
+            <span class="input-group-addon">商品名</span>
+            <input type="text" class="form-control" placeholder="请输入要修改的商品名"  ng-model="prdname1">
+          </div>
+          <br/>
+          <div class="input-group">
+            <span class="input-group-addon">关键字1</span>
+            <input type="text" class="form-control" placeholder="请输入要修改的关键字1" ng-model="prdfont1">
+          </div>
+          <br/>
+          <div class="input-group">
+            <span class="input-group-addon">关键字中间名</span>
+            <input type="text" class="form-control" placeholder="请输入要修改的关键字中间名" ng-model="prdi">
+          </div>
+          <br/>
+          <div class="input-group">
+            <span class="input-group-addon">关键字2</span>
+            <input type="text" class="form-control" placeholder="请输入要修改的关键字2" ng-model="prdfont2">
+          </div>
+          <br/>
+          <div class="input-group">
+            <span class="input-group-addon">商品名补充</span>
+            <input type="text" class="form-control" placeholder="请输入要修改的商品名补充" ng-model="prdname2">
+          </div>
+          <br/>
+          <div class="input-group">
+            <span class="input-group-addon">价格</span>
+            <input type="text" class="form-control" placeholder="请输入要修改的商品价格" ng-model="prdprice">
+          </div>
+          <br/>
+          <div class="input-group">
+            <span class="input-group-addon">图片路径</span>
+            <input type="text" class="form-control" placeholder="请输入要修改的图片路径" ng-model="prdimgsrc">
+          </div>
+          <br/>
+          <div class="input-group">
+            <span class="input-group-addon">店铺名</span>
+            <input type="text" class="form-control" placeholder="请输入要修改的店铺名" ng-model="prddianpu">
+          </div>
+          <br/>
+          <div class="input-group">
+            <span class="input-group-addon">？人评价</span>
+            <input type="text" class="form-control" placeholder="请输入要评价的人数" ng-model="prdpingjia">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+          </button>
+          <button type="button" class="btn btn-primary" ng-click="gengxin($index)" data-dismiss="modal">
+            提交更改
+          </button>
+        </div>
+      </div>
+      <!-- /.modal-content -->
+    </div>
+    <!-- /.modal -->
+  </div>
+  <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+            &times;
+          </button>
+          <h4 class="modal-title" id="myModalLabel">
+            请输入商品信息
+          </h4>
+        </div>
+        <div class="modal-body">
+
+          <div class="input-group">
+
+            <span class="input-group-addon">商品名</span>
+            <input type="text" class="form-control" placeholder="请输入要增加的商品名"  ng-model="addprdname1">
+          </div>
+          <br/>
+          <div class="input-group">
+            <span class="input-group-addon">关键字1</span>
+            <input type="text" class="form-control" placeholder="请输入要增加的关键字1" ng-model="addprdfont1">
+          </div>
+
+          <br/>
+          <div class="input-group">
+            <span class="input-group-addon">关键字中间名</span>
+            <input type="text" class="form-control" placeholder="请输入要增加的关键字中间名" ng-model="addprdi">
+          </div>
+          <br/>
+          <div class="input-group">
+            <span class="input-group-addon">关键字2</span>
+            <input type="text" class="form-control" placeholder="请输入要增加的关键字2" ng-model="addprdfont2">
+          </div>
+          <br/>
+          <div class="input-group">
+            <span class="input-group-addon">商品名补充</span>
+            <input type="text" class="form-control" placeholder="请输入要增加的商品名补充" ng-model="addprdname2">
+          </div>
+          <br/>
+          <div class="input-group">
+            <span class="input-group-addon">价格</span>
+            <input type="text" class="form-control" placeholder="请输入要增加的商品价格" ng-model="addprdprice">
+          </div>
+          <br/>
+          <div class="input-group">
+            <span class="input-group-addon">图片路径</span>
+            <input type="text" class="form-control" placeholder="请输入要增加的图片路径" ng-model="addprdimgsrc">
+          </div>
+          <br/>
+          <div class="input-group">
+            <span class="input-group-addon">店铺名</span>
+            <input type="text" class="form-control" placeholder="请输入要增加的店铺名" ng-model="addprddianpu">
+          </div>
+          <br/>
+          <div class="input-group">
+            <span class="input-group-addon">？人评价</span>
+            <input type="text" class="form-control" placeholder="请输入要评价的人数" ng-model="addprdpingjia">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+          </button>
+          <button type="button" class="btn btn-primary" ng-click="add()" data-dismiss="modal">
+            提交信息
+          </button>
+        </div>
+      </div>
+      <!-- /.modal-content -->
+    </div>
+    <!-- /.modal -->
+  </div>
+
+
+    <footer>
+      <hr>
+
+
+      <p class="pull-right">Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a></p>
+
+      <p>&copy; 2012 <a href="#" target="_blank">Portnine</a></p>
+    </footer>
+
+  </div>
+</div>
